@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/Desktop.dir/prob1.2.c.o  -o Desktop 

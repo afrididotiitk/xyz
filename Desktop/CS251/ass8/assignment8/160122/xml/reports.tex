@@ -1,0 +1,116 @@
+% \documentclass{Report}
+% \usepackage{float}
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+% \usepackage{epstopdf}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{ a4paper, left=2mm, top=2mm, bottom=2mm, right=2mm }
+% \epstopdfsetup{update}
+% \usepackage{caption}
+\title{Report}
+\author{Ankit Kumar Singh}
+\date{March 2018}
+% \captionsetup{labelformat=empty}
+\begin{document}
+
+\maketitle
+\newpage
+% \section{Scatter Plots}
+% %Plot with Thread = 1 
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[scale=1.1]{scatter_1}
+    
+    \caption{Scatter Plot With Thread 1}
+    \label{fig:sc1}
+\end{figure*}
+%Plot with Thread = 2 
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[scale=1.1]{scatter_2}
+    \caption{Scatter Plot With Thread 2}
+    \label{fig:sc2}
+\end{figure*}
+%Plot with Thread = 4
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[scale=1.1]{scatter_4}
+    \caption{Scatter Plot With Thread 4}
+    \label{fig:sc4}
+\end{figure*}
+%Plot with Thread = 8
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[scale=1.1]{scatter_8}
+    \caption{Scatter Plot With Thread 8}
+    \label{fig:sc8}
+\end{figure*}
+% %Plot with Thread = 16 
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[scale=1.1]{scatter_16}
+    \caption{Scatter Plot With Thread 16}
+    \label{fig:sc16}
+\end{figure*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  \end{document}
+% \begin{document}
+
+
+
+\newpage
+% \section{Line Plots}
+%Plot with Thread = 1 
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[scale=1.1]{line1}
+    \caption{Line Plot With Thread 1}
+    \label{fig:sc1}
+\end{figure*}
+%Plot with Thread = 2 
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[scale=1.1]{line2}
+    \caption{Line Plot With Thread 2}
+    \label{fig:sc2}
+\end{figure*}
+%Plot with Thread = 4 
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[scale=1.1]{line4}
+    \caption{Line Plot With Thread 4}
+    \label{fig:sc4}
+\end{figure*}
+%Plot with Thread = 8 
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[scale=1.1]{line8}
+    \caption{Line Plot With Thread 8}
+    \label{fig:sc8}
+\end{figure*}
+%Plot with Thread = 16 
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[scale=1.1]{line16}
+    \caption{Line Plot With Thread 16}
+    \label{fig:ln16}
+\end{figure*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+% \section{Speedup Histograms}
+% \maketitle
+\begin{figure}[!ht]
+\centering
+    \includegraphics[scale=1.1]{speedup.eps}
+    \caption{Speedup plot}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[!ht]
+\centering
+    \includegraphics[scale=1.1]{speedup_error.eps}
+    \caption{Speedup plot With Error }
+\end{figure}
+\end{document}

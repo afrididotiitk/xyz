@@ -1,0 +1,115 @@
+% \documentclass{Report}
+% \usepackage{float}
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+% \usepackage{epstopdf}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{ a4paper, left=2mm, top=2mm, bottom=2mm, right=2mm }
+% \epstopdfsetup{update}
+% \usepackage{caption}
+\title{Report}
+\author{Mohd Shahid Khan Afridi}
+\date{26 March 2018}
+% \captionsetup{labelformat=empty}
+\begin{document}
+
+\maketitle
+\newpage
+% \scatter plotting section}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Thread 1 plotting 
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[scale=1.1]{scatter_1}
+    
+    \caption{A scatter plot coresponding to the statistics  of thread 1}
+    \label{fig:sc1}
+\end{figure*}
+%P%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Thread 2 plotting
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[scale=1.1]{scatter_2}
+    \caption{A scatter plot coresponding to the statistics  of thread 2}
+    \label{fig:sc2}
+\end{figure*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Thread 4 plotting
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[scale=1.1]{scatter_4}
+    \caption{A scatter plot coresponding to the statistics  of thread 4}
+    \label{fig:sc4}
+\end{figure*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Thread 8 plotting
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[scale=1.1]{scatter_8}
+    \caption{A scatter plot coresponding to the statistics  of thread 8}
+    \label{fig:sc8}
+\end{figure*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %Thread 16 plotting
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[scale=1.1]{scatter_16}
+    \caption{A scatter plot coresponding to the statistics  of thread 16}
+    \label{fig:sc16}
+\end{figure*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  \end{document}
+% \begin{document}
+
+
+
+\newpage
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%line plotting section
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Thread 1 plotting 
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[scale=1.1]{line1}
+    \caption{A Line Plot corresponding to statistics of Thread 1}
+    \label{fig:sc1}
+\end{figure*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Thread 2 plotting 
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[scale=1.1]{line2}
+    \caption{A Line Plot corresponding to statistics of Thread 2}
+    \label{fig:sc2}
+\end{figure*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Thread 4 plotting
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[scale=1.1]{line4}
+    \caption{A Line Plot corresponding to statistics of Thread 4}
+    \label{fig:sc4}
+\end{figure*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Thread 8 plotting 
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[scale=1.1]{line8}
+    \caption{A Line Plot corresponding to statistics of Thread 8}
+    \label{fig:sc8}
+\end{figure*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Thread 16 plotting 
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[scale=1.1]{line16}
+    \caption{A Line Plot corresponding to statistics of Thread 16}
+    \label{fig:ln16}
+\end{figure*}
+
+\newpage
+% \histograms section
+\begin{figure}[!ht]
+\centering
+    \includegraphics[scale=1.1]{speedup.eps}
+    \caption{plot showing Speedup}
+\end{figure}
+
+
+\begin{figure}[!ht]
+\centering
+    \includegraphics[scale=1.1]{speedup_error.eps}
+    \caption{plot showing Speedup With Error }
+\end{figure}
+\end{document}

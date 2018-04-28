@@ -1,0 +1,142 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<sys/time.h>
+
+#define NUM 10000000
+
+#define CUDA_ERROR_EXIT(str) do{\
+                                    cudaError err = cudaGetLastError();\
+                                    if( err != cudaSuccess){\
+                                             printf("Cuda Error: '%s' for %s\n", cudaGetErrorString(err), str);\
+                                             exit(-1);\
+                                    }\
+                             }while(0);
+#define TDIFF(start, end) ((end.tv_sec - start.tv_sec) * 1000000UL + (end.tv_usec - start.tv_usec))
+#define USAGE_EXIT(s) do{\
+		}while(0);
+void display(long long int* a,long long  int num)
+{
+	for(int i =0;i< num;i++)
+	 {
+		printf("%lld___________",*(a+i));
+	 }
+	printf("\n===============\n");
+}
+__global__ void calculate(long long int *mem, long long int num,int level)
+{
+     
+     long long  int mod_val = (1 << level);
+     long int i = blockDim.x * blockIdx.x + threadIdx.x;//thread id 
+      if(i >= num || (i%mod_val))
+           return;
+     long long   int * a = (mem+i);
+	 if( i == num -1)
+		return;
+         if((i+mod_val > num))
+         {
+           long long int b = *a ^ *(mem+(num-1));//*(sizeof(int)));
+           *a=0;
+           *(mem+(num-1))=b;
+          return;  
+         }
+         
+      long long int  * b = (a+(mod_val-1));//*sizeof(int));
+      long long  int threadNumber = i/mod_val;
+      long long  int op=(*a)^(*b);
+      if(threadNumber & 1)
+      {
+         *a=0;
+         *b=op;
+      }
+      else {
+          *a = op;
+          *b = 0;
+      }
+    return ;
+}
+
+int main(int argc, char **argv)
+{
+    struct timeval start, end, t_start, t_end;
+    int i;
+    //long long int  *pa;
+    long long int  *ptr;
+    long long int  *sptr;
+    long long int  *gpu_mem;    
+    unsigned long long  int SEED;		
+    unsigned long long int num = NUM;   /*Default value of num from MACRO*/
+    int blocks;
+
+    if(argc == 3){
+         num = atoi(argv[1]);   /*Update after checking*/
+	  long long    int temp=atoi(argv[2]);
+		if(temp < 0 || num < 1 )
+			{
+				printf("Invalid Input");
+				exit(-1);
+			}		
+	SEED=temp;
+    }
+	else {
+		printf("Usage <# of elements> <SEED value> ");
+		exit(-1);
+	}	
+	/***
+	TODO: comment the num initialization
+	*/
+	//num = 3;
+    /* Allocate host (CPU) memory and initialize*/
+    srand(SEED);
+    ptr = (long long int *)malloc(num  * sizeof(long long int));
+    sptr = ptr;
+	// int k = 1;
+    for(i=0; i<num; ++i){
+	
+       *(ptr+i) = random();
+    }
+    
+    gettimeofday(&t_start, NULL);
+    
+    /* Allocate GPU memory and copy from CPU --> GPU*/
+
+    cudaMalloc(&gpu_mem, num * sizeof(long long int));
+    CUDA_ERROR_EXIT("cudaMalloc");
+
+    cudaMemcpy(gpu_mem, ptr, num  * sizeof(long long int) , cudaMemcpyHostToDevice);
+    CUDA_ERROR_EXIT("cudaMemcpy");
+    
+    gettimeofday(&start, NULL);
+    
+    blocks = num /1024;
+    
+    if(num % 1024)
+           ++blocks;
+    int max_Levels=(int)log(num) + 2 ;
+ //   display(ptr,num);
+//    printf("================\n");
+    for(int k = 1; k <= max_Levels;k++)
+    {
+        calculate<<<blocks, 1024>>>(gpu_mem, num,k);
+        CUDA_ERROR_EXIT("kernel invocation");
+//	cudaMemcpy(ptr, gpu_mem, num  * sizeof(long long int) , cudaMemcpyDeviceToHost);
+//	display(ptr,num);
+}
+    gettimeofday(&end, NULL);
+    
+    /* Copy back result*/
+
+    cudaMemcpy(ptr, gpu_mem, num*sizeof(long long int) , cudaMemcpyDeviceToHost);
+    CUDA_ERROR_EXIT("memcpy");
+    gettimeofday(&t_end, NULL);
+    
+    printf("Total time = %ld microsecs Processsing =%ld microsecs\n", TDIFF(t_start, t_end), TDIFF(start, end));
+    cudaFree(gpu_mem);
+    sptr = ptr;
+   
+    /*Print the last element for sanity check*/ 
+    //pa = (sptr + (num -1));//*sizeof(int));
+	if(num != 1)
+	    *sptr = *sptr^*(sptr+num-1);
+    printf("final val:\t%lld\n",*sptr);    
+    free(ptr);
+}
